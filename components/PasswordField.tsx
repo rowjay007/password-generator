@@ -25,3 +25,6 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ password }) => {
     </div>
   );
 };
+
+
+export default PasswordField;

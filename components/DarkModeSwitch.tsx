@@ -23,3 +23,6 @@ const DarkModeSwitch: React.FC<DarkModeSwitchProps> = ({ onToggle }) => {
     </div>
   );
 };
+
+
+export default DarkModeSwitch;
