@@ -41,7 +41,6 @@ const PasswordGenerator: React.FC<Props> = ({
 
   return (
     <div>
-      <button onClick={generatePassword}>Generate Password</button>
       <p>{password}</p>
     </div>
   );

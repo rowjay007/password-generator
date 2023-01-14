@@ -1,30 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Props {
-  label: string;
+  text: string;
+  tag: string;
   onChange: (value: boolean) => void;
-  checked?: boolean;
+  checked: boolean;
+  className?: string;
 }
 
-const Checkbox: React.FC<Props> = ({ label, onChange, checked = false }) => {
-  const [isChecked, setIsChecked] = useState(checked);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked);
-    onChange(event.target.checked);
-  };
-
+const CheckBox: React.FC<Props> = ({
+  text,
+  tag,
+  onChange,
+  checked,
+  className,
+}) => {
   return (
-    <label className="inline-flex items-center">
+    <div className={`flex items-center ${className}`}>
       <input
         type="checkbox"
+        id={tag}
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
         className="form-checkbox"
-        checked={isChecked}
-        onChange={handleChange}
       />
-      <span className="ml-2">{label}</span>
-    </label>
+      <label htmlFor={tag} className="ml-2">
+        {text}
+      </label>
+    </div>
   );
 };
 
-export default Checkbox;
+export default CheckBox;
+
