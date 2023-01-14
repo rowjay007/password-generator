@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import MainContainer from "../components/MainContainer";
 import Checkbox from "../components/Checkbox";
+import PasswordGenerator from "../components/PasswordGenerator";
 export default function Page() {
   const [includeLowercase, setIncludeLowercase] = useState(true);
   const [includeUppercase, setIncludeUppercase] = useState(true);
@@ -11,6 +12,7 @@ export default function Page() {
   return (
     <MainContainer>
       <Checkbox
+      
         label="Include lowercase letters"
         onChange={(value) => setIncludeLowercase(value)}
         checked={includeLowercase}
@@ -43,13 +45,13 @@ export default function Page() {
       includeUppercase={includeUppercase}
       includeSymbols={includeSymbols}
       includeNumbers={includeNumbers}
-    />
+    /> */}
     <PasswordGenerator
       includeLowercase={includeLowercase}
       includeUppercase={includeUppercase}
       includeSymbols={includeSymbols}
       includeNumbers={includeNumbers}
-    /> */}
+    />
     </MainContainer>
   );
 }
