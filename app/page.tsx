@@ -1,15 +1,8 @@
-"use client";
-
-import React, { useState } from "react";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+import MainContainer from "../components/MainContainer";
+export default function Page() {
   return (
-    <div>
+    <MainContainer>
       <h1>Hello World</h1>
-    </div>
+    </MainContainer>
   );
 }
