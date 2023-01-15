@@ -7,6 +7,7 @@ import Slider from "../components/Slider";
 import CheckBox from "../components/CheckBox";
 import StrengthMeter from "../components/StrengthMeter";
 import GenerateButton from "../components/GenerateButton";
+import Content from "../components/Content";
 
 const App = () => {
   const [includeLowercase, setIncludeLowercase] = useState(true);
@@ -21,8 +22,10 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-medium leading-tight text-almost-white bg-[#556D92] flex justify-between items-center p-2 py-1.9 px-1.6 mb-2.4">Password Generator</h1>
+    <Content>
+      <h1 className="text-center text-grey font-medium text-lg leading-medium my-4 sm:text-xl">
+        Password Generator
+      </h1>
       <Display password={password} />
       <Options>
         <Slider
@@ -61,7 +64,7 @@ const App = () => {
         <StrengthMeter password={password} className="my-4" />
         <GenerateButton onClick={generatePassword} className="my-4" />
       </Options>
-    </div>
+    </Content>
   );
 };
 
