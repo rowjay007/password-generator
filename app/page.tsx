@@ -21,8 +21,8 @@ const App = () => {
   };
 
   return (
-    <MainContainer>
-      <h1 className="text-center text-2xl font-medium">Password Generator</h1>
+    <div>
+      <h1 className="text-2xl font-medium leading-tight text-almost-white bg-[#556D92] flex justify-between items-center p-2 py-1.9 px-1.6 mb-2.4">Password Generator</h1>
       <Display password={password} />
       <Options>
         <Slider
@@ -61,7 +61,7 @@ const App = () => {
         <StrengthMeter password={password} className="my-4" />
         <GenerateButton onClick={generatePassword} className="my-4" />
       </Options>
-    </MainContainer>
+    </div>
   );
 };
 
