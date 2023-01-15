@@ -14,3 +14,12 @@ const MainContainer: React.FC<Props> = ({ children }) => {
 
 export default MainContainer;
 
+import tw from "twin.macro";
+
+interface MainContainerProps {
+  children: React.ReactNode;
+}
+
+const MainContainer: React.FC<MainContainerProps> = ({ children }) => {
+  return <div css={[tw`bg-gray-200 min-h-screen p-8`]}>{children}</div>;
+};

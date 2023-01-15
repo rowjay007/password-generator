@@ -1,71 +1,87 @@
+
 "use client"
-import React, { useState } from "react";
-import MainContainer from "../components/MainContainer";
-import Display from "../components/Display";
-import Options from "../components/Options";
-import Slider from "../components/Slider";
-import CheckBox from "../components/CheckBox";
-import StrengthMeter from "../components/StrengthMeter";
-import GenerateButton from "../components/GenerateButton";
-import Content from "../components/Content";
+import { useState, useEffect } from "react";
+import { useStore } from "zustand";
+import { generatePassword } from "./utils/password";
+import {
+  MainContainer,
+  Display,
+  Options,
+  Slider,
+  CheckBox,
+  StrengthMeter,
+  GenerateButton,
+} from "../components";
 
-const App = () => {
-  const [includeLowercase, setIncludeLowercase] = useState(true);
-  const [includeUppercase, setIncludeUppercase] = useState(true);
-  const [includeSymbols, setIncludeSymbols] = useState(true);
-  const [includeNumbers, setIncludeNumbers] = useState(true);
-  const [password, setPassword] = useState("");
-  const [passwordLength, setPasswordLength] = useState(16);
+const Index = () => {
+  const [length, setLength] = useState(12);
+  const [uppLetters, setUppLetters] = useState(true);
+  const [lowLetters, setLowLetters] = useState(true);
+  const [numbers, setNumbers] = useState(true);
+  const [symbols, setSymbols] = useState(false);
+  const [password, setPassword] = useStore((state) => state.password);
 
-  const generatePassword = () => {
-    // your code for generating password
+  const handleLengthChange = (e: any) => {
+    setLength(e.target.value);
+  };
+
+  const handleCheckBoxChange = (e: any) => {
+    if (e.target.name === "uppLetters") {
+      setUppLetters(!uppLetters);
+    } else if (e.target.name === "lowLetters") {
+      setLowLetters(!lowLetters);
+    } else if (e.target.name === "numbers") {
+      setNumbers(!numbers);
+    } else if (e.target.name === "symbols") {
+      setSymbols(!symbols);
+    }
+  };
+
+  const handleGenerate = () => {
+    setPassword(
+      generatePassword(length, uppLetters, lowLetters, numbers, symbols)
+    );
+  };
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(password);
   };
 
   return (
-    <Content>
-      <h1 className="text-center text-grey font-medium text-lg leading-medium my-4 sm:text-xl">
-        Password Generator
-      </h1>
-      <Display password={password} />
+    <MainContainer>
+      <h1>Password Generator</h1>
+      <Display password={password} onClick={handleCopyToClipboard} />
       <Options>
-        <Slider
-          value={passwordLength}
-          onChange={setPasswordLength}
-          className="my-4"
-        />
+        <Slider value={length} onChange={handleLengthChange} />
         <CheckBox
           text="Include Uppercase Letters"
           tag="uppLetters"
-          onChange={(value) => setIncludeUppercase(value)}
-          checked={includeUppercase}
-          className="my-2"
+          checked={uppLetters}
+          onChange={handleCheckBoxChange}
         />
         <CheckBox
           text="Include Lowercase Letters"
           tag="lowLetters"
-          onChange={(value) => setIncludeLowercase(value)}
-          checked={includeLowercase}
-          className="my-2"
+          checked={lowLetters}
+          onChange={handleCheckBoxChange}
         />
         <CheckBox
           text="Include Numbers"
           tag="numbers"
-          onChange={(value) => setIncludeNumbers(value)}
-          checked={includeNumbers}
-          className="my-2"
+          checked={numbers}
+          onChange={handleCheckBoxChange}
         />
         <CheckBox
           text="Include Symbols"
           tag="symbols"
-          onChange={(value) => setIncludeSymbols(value)}
-          checked={includeSymbols}
-          className="my-2"
+          checked={symbols}
+          onChange={handleCheckBoxChange}
         />
-        <StrengthMeter password={password} className="my-4" />
-        <GenerateButton onClick={generatePassword} className="my-4" />
+        <StrengthMeter password={password} />
+        <GenerateButton onClick={handleGenerate} />
       </Options>
-    </Content>
+    </MainContainer>
   );
 };
 
-export default App;
+export default Index;

@@ -1,5 +1,5 @@
 import React from "react";
-import { calculateStrength, getStrengthClass } from "./calculateStrength";
+import { calculateStrength, getStrengthClass } from "../helpers/calculateStrength";
 interface Props {
   password: string;
   className?: string;

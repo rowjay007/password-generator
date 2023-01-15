@@ -1,4 +1,3 @@
-import MainContainer from "../components/MainContainer";
 import "./globals.css";
 
 export default function RootLayout({
@@ -10,7 +9,9 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body>
-        <MainContainer>{children}</MainContainer>
+        <main className="bg-dark-grey text-grey font-medium text-base leading-body m-0 p-0 box-border w-full h-full flex items-center justify-center">
+          {children}
+        </main>
       </body>
     </html>
   );
