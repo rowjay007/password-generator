@@ -1,15 +1,20 @@
-import React from "react";
+import tw from "twin.macro";
 
-interface Props {
+interface DisplayProps {
   password: string;
+  onClick: () => void;
 }
 
-const Display: React.FC<Props> = ({ password }) => {
+const Display: React.FC<DisplayProps> = ({ password, onClick }) => {
   return (
-    <div className="flex flex-col items-center">
-      <p className="text-center text-3xl font-medium">{password}</p>
+    <div css={[tw`bg-white p-4 rounded-lg text-center`]}>
+      <p css={[tw`text-lg`]}>{password}</p>
+      <button
+        css={[tw`bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg`]}
+        onClick={onClick}
+      >
+        Copy to clipboard
+      </button>
     </div>
   );
 };
-
-export default Display;

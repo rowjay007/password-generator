@@ -1,33 +1,19 @@
-import React, { useState } from "react";
+import tw from "twin.macro";
 
-interface Props {
-  value: number;
-  onChange: any;
-//   onChange: (value: number) => void;
-  className?: string;
+interface SliderProps {
+  length: number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Slider: React.FC<Props> = ({ value, onChange, className }) => {
-  const [localValue, setLocalValue] = useState(value);
-
+const Slider: React.FC<SliderProps> = ({ length, onChange }) => {
   return (
-    <div className={`relative ${className}`}>
-      <input
-        type="range"
-        min="8"
-        max="32"
-        value={localValue}
-        onChange={(e) => {
-          setLocalValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        className="w-full"
-      />
-      <div className="absolute bottom-0 left-0 text-sm text-gray-600">
-        {localValue}
-      </div>
-    </div>
+    <input
+      type="range"
+      css={[tw`w-full`]}
+      min={8}
+      max={32}
+      value={length}
+      onChange={onChange}
+    />
   );
 };
-
-export default Slider;

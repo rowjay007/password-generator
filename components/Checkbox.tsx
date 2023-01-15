@@ -1,35 +1,24 @@
-import React from 'react';
+import tw from "twin.macro";
 
-interface Props {
-  text: string;
-  tag: string;
-  onChange: (value: boolean) => void;
-  checked: boolean;
-  className?: string;
+interface CheckBoxProps {
+  id: string;
+  label: string;
+  isChecked: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CheckBox: React.FC<Props> = ({
-  text,
-  tag,
+const CheckBox: React.FC<CheckBoxProps> = ({
+  id,
+  label,
+  isChecked,
   onChange,
-  checked,
-  className,
 }) => {
   return (
-    <div className={`flex items-center ${className}`}>
-      <input
-        type="checkbox"
-        id={tag}
-        checked={checked}
-        onChange={(e) => onChange(e.target.checked)}
-        className="form-checkbox"
-      />
-      <label htmlFor={tag} className="ml-2">
-        {text}
+    <div css={[tw`flex items-center`]}>
+      <input type="checkbox" id={id} checked={isChecked} onChange={onChange} />
+      <label css={[tw`ml-2`]} htmlFor={id}>
+        {label}
       </label>
     </div>
   );
 };
-
-export default CheckBox;
-
