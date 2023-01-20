@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as ArrowIcon } from "../../images/icon-arrow-right.svg";
+import { ReactComponent as ArrowIcon } from "../../images/right-arrow.svg";
 import { useAppSelector } from "../../store/hooks";
 import { useAppDispatch } from "../../store/hooks";
 import { generatePassword } from "../../store/passwordSlice";

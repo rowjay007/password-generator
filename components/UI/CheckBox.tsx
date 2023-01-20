@@ -1,14 +1,10 @@
 import React from "react";
 
-import { ReactComponent as CheckIcon } from "../../../images/icon-check.svg";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { selectParams } from "../../../store/passwordSlice";
-import { setParams } from "../../../store/passwordSlice";
-import {
-  ChexBoxLabel,
-  HiddenCheckBox,
-  CustomeCheckBox,
-} from "./CheckBoxStyles";
+import { ReactComponent as CheckIcon } from "../../images/icon-check.svg";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { selectParams } from "../../store/passwordSlice";
+import { setParams } from "../../store/passwordSlice";
+
 const CheckBox: React.FC<{ text: string; tag: string }> = ({ text, tag }) => {
   const params = useAppSelector(selectParams);
   const dispatch = useAppDispatch();
@@ -17,13 +13,13 @@ const CheckBox: React.FC<{ text: string; tag: string }> = ({ text, tag }) => {
     dispatch(setParams(tag));
   };
   return (
-    <ChexBoxLabel data-testid="checkbox">
-      <HiddenCheckBox onChange={checkHandler} />
-      <CustomeCheckBox isChecked={params[tag]}>
+    <div data-testid="checkbox">
+      <div onChange={checkHandler} />
+      <div isChecked={params[tag]}>
         <CheckIcon />
-      </CustomeCheckBox>
+      </div>
       <p>{text}</p>
-    </ChexBoxLabel>
+    </div>
   );
 };
 
