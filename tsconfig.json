@@ -20,6 +20,14 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Form"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/Form",
+    "src/components",
+    "src/custom.d.ts"
+, "components/SVG/ArrowIcon.jsx"  ],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,10 @@
+"use client"
 import React from 'react';
-import { ReactComponent as CopyIcon } from '../../public/images/copy.svg';
+import  copyIcon from '../../images/copy.svg';
 import { useAppSelector } from '../../store/hooks';
 import { selectPassword } from '../../store/passwordSlice';
+import {CopyIcon} from '../SVG/CopyIcon'
+
 const Display: React.FC = () => {
   const password = useAppSelector(selectPassword);
 

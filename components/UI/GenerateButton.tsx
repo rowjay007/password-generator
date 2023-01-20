@@ -1,9 +1,12 @@
+"use client"
 import React from "react";
-import { ReactComponent as ArrowIcon } from "../../images/right-arrow.svg";
 import { useAppSelector } from "../../store/hooks";
 import { useAppDispatch } from "../../store/hooks";
 import { generatePassword } from "../../store/passwordSlice";
 import { selectLength, selectParams } from "../../store/passwordSlice";
+import { ArrowIcon } from "../SVG/ArrowIcon";
+
+
 const GenerateButton: React.FC = () => {
   const length = useAppSelector(selectLength);
   const params = useAppSelector(selectParams);

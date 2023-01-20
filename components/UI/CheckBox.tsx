@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
-
-import { ReactComponent as CheckIcon } from "../../images/icon-check.svg";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectParams } from "../../store/passwordSlice";
 import { setParams } from "../../store/passwordSlice";
+import { CheckIcon } from "../SVG/CheckIcon";
+
 
 const CheckBox: React.FC<{ text: string; tag: string }> = ({ text, tag }) => {
   const params = useAppSelector(selectParams);

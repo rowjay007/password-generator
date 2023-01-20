@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { useAppSelector } from "../../store/hooks";
 import { selectStrength } from "../../store/passwordSlice";
