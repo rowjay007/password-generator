@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectParams } from "../../store/passwordSlice";
 import { setParams } from "../../store/passwordSlice";
 import { CheckIcon } from "../SVG/CheckIcon";
+import { CheckBoxLabel, CustomCheckBox, HiddenCheckBox } from "./CheckBoxStyles";
 
 
 const CheckBox: React.FC<{ text: string; tag: string }> = ({ text, tag }) => {
@@ -14,13 +15,13 @@ const CheckBox: React.FC<{ text: string; tag: string }> = ({ text, tag }) => {
     dispatch(setParams(tag));
   };
   return (
-    <div data-testid="checkbox">
-      <div onChange={checkHandler} />
-      <div isChecked={params[tag]}>
+    <CheckBoxLabel data-testid="checkbox">
+      <HiddenCheckBox onChange={checkHandler} />
+      <CustomCheckBox isChecked={params[tag]}>
         <CheckIcon />
-      </div>
+      </CustomCheckBox>
       <p>{text}</p>
-    </div>
+    </CheckBoxLabel>
   );
 };
 
