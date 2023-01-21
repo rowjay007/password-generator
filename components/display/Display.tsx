@@ -1,6 +1,5 @@
 "use client"
 import React from 'react';
-import  copyIcon from '../../images/copy.svg';
 import { useAppSelector } from '../../store/hooks';
 import { selectPassword } from '../../store/passwordSlice';
 import {CopyIcon} from '../SVG/CopyIcon'

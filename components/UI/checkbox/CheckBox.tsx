@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { selectParams } from "../../store/passwordSlice";
-import { setParams } from "../../store/passwordSlice";
-import { CheckIcon } from "../SVG/CheckIcon";
-import { CheckBoxLabel, CustomCheckBox, HiddenCheckBox } from "./CheckBoxStyles";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { selectParams } from "../../../store/passwordSlice";
+import { setParams } from "../../../store/passwordSlice";
+import { CheckIcon } from "../../SVG/CheckIcon";
+import CheckBoxLabel from "../checkbox/CheckBoxLabel";
+import CustomCheckBox from "../checkbox/CustomCheckBox";
+import HiddenCheckBox from "../HiddenCheckBoxProps";
 
 
 const CheckBox: React.FC<{ text: string; tag: string }> = ({ text, tag }) => {
