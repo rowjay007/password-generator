@@ -1,5 +1,6 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, ChangeEvent } from "react";
+
 import Button from "../components/Button";
 import Checkbox from "../components/Checkbox";
 import Password from "../components/Password";
@@ -83,9 +84,12 @@ function page() {
         </div>
         <Range
           value={characterLength}
-          onChange={(e) => setCharacterLength(+e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setCharacterLength(+e.target.value)
+          }
           className="mb-[2.62rem] md:w-[29.75rem] w-[19.43rem]          "
         />
+
         <ul className="">
           {optionsText.map((option) => (
             <li
