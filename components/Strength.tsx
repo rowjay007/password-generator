@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export type StrengthType = 0 | 1 | 2 | 3 | 4;
-const availableStrengths: StrengthType[] = [0, 1, 2, 3, 4];
+const availableStrengths: StrengthType[] = [1, 2, 3, 4];
 type StrengthProps = {
   strength: StrengthType;
   setStrength: React.Dispatch<React.SetStateAction<StrengthType>>;
@@ -15,6 +15,7 @@ type StrengthProps = {
     }>
   >;
 };
+
 function Strength({
   strength,
   setStrength,
@@ -25,46 +26,20 @@ function Strength({
   useEffect(() => {
     setTempStrength(strength);
   }, [strength]);
+  
   const handleOnClick = (level: StrengthType) => {
-    if (level === 1) {
-      setCharacterLength(30);
-      setOptions({
-        lowerCase: true,
-        numbers: true,
-        symbols: false,
-        upperCase: false,
-      });
-    }
-    if (level === 2) {
-      setCharacterLength(40);
-      setOptions({
-        lowerCase: true,
-        numbers: true,
-        symbols: false,
-        upperCase: false,
-      });
-    }
-    if (level === 3) {
-      setCharacterLength(40);
-      setOptions({
-        lowerCase: true,
-        numbers: true,
-        symbols: true,
-        upperCase: true,
-      });
-    } // 10 --- 50 / 12 --- x
-    if (level === 4) {
-      setCharacterLength(60);
-      setOptions({
-        lowerCase: true,
-        numbers: true,
-        symbols: true,
-        upperCase: true,
-      });
-    }
+    setStrength(level);
+    setOptions({
+      lowerCase: level !== 1,
+      numbers: true,
+      symbols: level >= 3,
+      upperCase: level >= 3,
+    });
+    setCharacterLength(level === 1 ? 30 : level === 2 ? 40 : 60);
   };
+
   return (
-    <div className="bg-[#18171F]  md:w-[29.75rem] w-[19.43rem] h-[4rem] md:h-[4.5rem] flex justify-between items-center px-[1rem] py-[1rem] md:px-8 md:py-[1.5rem] my-[2rem]">
+    <div className="bg-[#18171F] md:w-[29.75rem] w-[19.43rem] h-[4rem] md:h-[4.5rem] flex justify-between items-center px-[1rem] py-[1rem] md:px-8 md:py-[1.5rem] my-[2rem]">
       <div className="text-[#817D92] text-[1.125rem] leading-[1.485rem] uppercase">
         Strength
       </div>
@@ -72,25 +47,22 @@ function Strength({
         <div className="mx-[1rem] text[1.5rem] leading-[2rem] ">
           {strengthCharacteristics(tempStrength)?.title}
         </div>
-        {availableStrengths.map((level) => {
-          if (level > 0)
-            return (
-              <button
-                key={level}
-                onClick={() => handleOnClick(level)}
-                onMouseEnter={() => setTempStrength(level)}
-                onMouseLeave={() => setTempStrength(strength)}
-              >
-                <Rectangle
-                  color={
-                    tempStrength >= level
-                      ? strengthCharacteristics(tempStrength)?.color
-                      : undefined
-                  }
-                />
-              </button>
-            );
-        })}
+        {availableStrengths.map((level) => (
+          <button
+            key={level}
+            onClick={() => handleOnClick(level)}
+            onMouseEnter={() => setTempStrength(level)}
+            onMouseLeave={() => setTempStrength(strength)}
+          >
+            <Rectangle
+              color={
+                tempStrength >= level
+                  ? strengthCharacteristics(tempStrength)?.color
+                  : undefined
+              }
+            />
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -116,11 +88,5 @@ function Rectangle({ color }: RectangleProps) {
   const styles = color
     ? { backgroundColor: color }
     : { borderColor: "E6E5EA", borderWidth: "2px" };
-  return (
-    <div
-      className="
-       w-[0.625rem] h-[1.75rem] mr-[0.4rem]"
-      style={styles}
-    ></div>
-  );
+  return <div className="w-[1rem] h-[1rem]" style={styles} />;
 }
