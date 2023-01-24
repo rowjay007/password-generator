@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -27,13 +28,22 @@
     "react-svg": "^15.1.21",
     "styled-components": "^5.3.6",
     "tailwind.macro": "^0.5.10",
+    "ts-jest": "^29.0.5",
     "twin.macro": "^3.1.0",
     "typescript": "4.9.4",
     "zustand": "^4.2.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.20.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.2.6",
     "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.13",
+    "babel-jest": "^29.4.0",
+    "jest": "^29.4.0",
+    "jest-environment-jsdom": "^29.4.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4"
   }
