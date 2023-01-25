@@ -69,7 +69,7 @@ function Strength({
 }
 export default Strength;
 
-function strengthCharacteristics(strength: StrengthType) {
+export function strengthCharacteristics(strength: StrengthType) {
   switch (strength) {
     case 1:
       return { title: "Too Weak!", color: "#F64A4A" };

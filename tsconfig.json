@@ -27,7 +27,10 @@
     ".next/types/**/*.ts",
     "components/Form",
     "src/components",
-    "src/custom.d.ts"
-, "components/SVG/ArrowIcon.jsx"  ],
+    "src/custom.d.ts",
+    "components/SVG/ArrowIcon.jsx",
+    "components/__test__/Strength.test.tsx",
+    "components/__test__/Strength.test.tsx"
+  ],
   "exclude": ["node_modules"]
 }
